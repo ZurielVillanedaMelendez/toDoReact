@@ -16,6 +16,21 @@ function TaskList() {
         }
     }
 
+    const taskDelete = id => {
+        const actuallyTask = tasks.filter(task => task.id !== id);
+        setTasks(actuallyTask);
+    }
+
+    const taskComplete = id => {
+        const actuallyTask = tasks.map(task => {
+            if(task.id == id) {
+                task.done = !task.done;
+            }
+            return task;
+        });
+        setTasks(actuallyTask);
+    }
+
     return(
         <>
             <FormTask onSubmit={agregateTask} />
@@ -25,8 +40,10 @@ function TaskList() {
                     <Task 
                        key={tarea.id}
                        id={tarea.id}
-                       text={tarea.texto}
-                       done={tarea.done} />)
+                       texto={tarea.texto}
+                       done={tarea.done}
+                       taskDelete={taskDelete}
+                       taskComplete={taskComplete} />)
                 }
             </div>
         </>

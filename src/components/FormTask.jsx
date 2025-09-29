@@ -11,7 +11,8 @@ function FormTask(props) {
     }
 
     const handlerSend = e => {
-        e.preventDefault(); 
+        e.preventDefault();
+        
         const addTask = {
             id: uuid4(),
             texto: input,
